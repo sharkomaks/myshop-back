@@ -37,7 +37,7 @@ export class ReviewService {
 		return reviewId;
 	}
 
-	async create(userId: string, productId: string, storeId: string, dto: ReviewDto) {
+	async create(userId: string, storeId: string, productId: string, dto: ReviewDto) {
 		await this.productService.getById(productId);
 
 		return this.prisma.review.create({
@@ -48,14 +48,14 @@ export class ReviewService {
 						id: userId
 					}
 				},
-				product: {
-					connect: {
-						id: productId
-					}
-				},
 				store: {
 					connect: {
 						id: storeId
+					}
+				},
+				product: {
+					connect: {
+						id: productId
 					}
 				}
 			}

@@ -16,14 +16,14 @@ export class ReviewController {
 
 	@UsePipes(new ValidationPipe())
 	@Auth()
-	@Post(':productId/:storeId')
+	@Post(':storeId/:productId')
 	async create(
 		@CurrentUser('id') userId: string,
-		@Param('productId') productId: string,
 		@Param('storeId') storeId: string,
+		@Param('productId') productId: string,
 		@Body() dto: ReviewDto
 	) {
-		return this.reviewService.create(userId, productId, storeId, dto);
+		return this.reviewService.create(userId, storeId, productId, dto);
 	}
 
 	@Auth()
