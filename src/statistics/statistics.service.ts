@@ -30,9 +30,9 @@ export class StatisticsService {
 	async getMiddleStatistics(storeId: string) {
 		const monthlySales = await this.calculateMonthlySales(storeId);
 
-		const lastUser = await this.getLastUser(storeId);
+		const lastUsers = await this.getLastUser(storeId);
 
-		return { monthlySales, lastUser };
+		return { monthlySales, lastUsers };
 	}
 
 	private async calculateTotalRevenue(storeId: string) {
